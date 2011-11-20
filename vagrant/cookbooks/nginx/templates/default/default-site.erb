@@ -4,7 +4,7 @@ server {
 
   access_log  <%= node[:nginx][:log_dir] %>/localhost.access.log;
 
-    root   /var/www/nginx-drupal;
+  root   <%= node[:nginx][:default_site_root] %>;
   
         location = /favicon.ico {
                 log_not_found off;

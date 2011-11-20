@@ -4,14 +4,16 @@ case platform
 when "debian","ubuntu"
   set[:nginx][:dir]     = "/etc/nginx"
   set[:nginx][:log_dir] = "/var/log/nginx"
-  set[:nginx][:user]    = "vagrant"
+  default[:nginx][:user]    = "www-data"
   set[:nginx][:binary]  = "/usr/sbin/nginx"
 else
   set[:nginx][:dir]     = "/etc/nginx"
   set[:nginx][:log_dir] = "/var/log/nginx"
-  set[:nginx][:user]    = "vagrant"
+  default[:nginx][:user]    = "www-data"
   set[:nginx][:binary]  = "/usr/sbin/nginx"
 end
+
+default[:nginx][:default_site_root] = "/var/www/nginx-default"
 
 default[:nginx][:gzip] = "on"
 default[:nginx][:gzip_http_version] = "1.0"

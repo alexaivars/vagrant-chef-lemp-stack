@@ -40,7 +40,10 @@ Vagrant::Config.run do |config|
     chef.add_recipe("php-fpm")
     chef.add_recipe("drush")
     chef.add_recipe("nginx")
-    chef.json = { :mysql => { :server_root_password => "root", :bind_address => "0.0.0.0" } }
+    chef.json = { 
+      :mysql => { :server_root_password => "root", :bind_address => "0.0.0.0" },
+      :nginx => { :default_site_root => "/var/www/nginx-drupal", :user => "vagrant" }
+    }
   end
 
 end
