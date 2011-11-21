@@ -99,12 +99,14 @@ cookbook_file "/etc/php5/fpm/main.conf" do
   notifies :restart, "service[php5-fpm]"
 end
 
-cookbook_file "/etc/php5/fpm/pool.d/www.conf" do
-  source "www.conf"
+template "www.conf" do
+  path "/etc/php5/fpm/pool.d/www.conf"
+  source "www.conf.erb"
   mode 0644
   owner "root"
   group "root"
   notifies :restart, "service[php5-fpm]"
+  # notifies :restart, resources(:service => "php5-fpm"), :immediately
 end
 
 service "php5-fpm" do

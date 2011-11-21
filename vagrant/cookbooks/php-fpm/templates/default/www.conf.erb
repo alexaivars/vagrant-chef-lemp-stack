@@ -51,8 +51,8 @@ listen = /tmp/php-fpm.sock
 ; Unix user/group of processes
 ; Note: The user is mandatory. If the group is not set, the default user's group
 ;       will be used.
-user = vagrant
-group = vagrant
+user = <%= node[:"php-fpm"][:user] %> 
+group = <%= node[:"php-fpm"][:group] %>  
 
 ; Choose how the process manager will control the number of child processes.
 ; Possible Values:
